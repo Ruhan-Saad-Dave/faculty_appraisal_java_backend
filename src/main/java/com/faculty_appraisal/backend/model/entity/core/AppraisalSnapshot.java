@@ -1,0 +1,38 @@
+package com.faculty_appraisal.backend.model.entity.core;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Entity
+@Table(name = "appraisal_snapshots")
+@Data
+public class AppraisalSnapshot {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @Column(name = "faculty_email", nullable = false)
+    private String facultyEmail;
+
+    @Column(name = "academic_year", nullable = false)
+    private String academicYear;
+
+    @Column(columnDefinition = "jsonb", nullable = false)
+    private JsonNode payload;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
+    @PreUpdate
+    public void setUpdatedAt() {
+        this.updatedAt = LocalDateTime.now();
+    }
+}
