@@ -22,7 +22,7 @@ public class PasswordResetToken {
     private String tokenHash;
 
     @Column(nullable = false)
-    private Boolean used = false;
+    private boolean used = false;
 
     @Column(name = "expires_at", nullable = false)
     private LocalDateTime expiresAt;

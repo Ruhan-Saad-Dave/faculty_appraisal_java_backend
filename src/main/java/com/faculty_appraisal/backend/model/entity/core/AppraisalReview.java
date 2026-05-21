@@ -1,6 +1,5 @@
 package com.faculty_appraisal.backend.model.entity.core;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -40,8 +39,8 @@ public class AppraisalReview {
 
     private String remarks;
 
-    @Column(name = "section_scores", columnDefinition = "jsonb", nullable = false)
-    private JsonNode sectionScores;
+    @Column(name = "section_scores", columnDefinition = "TEXT", nullable = false)
+    private String  sectionScores;
 
     @Column(nullable = false)
     private String status;

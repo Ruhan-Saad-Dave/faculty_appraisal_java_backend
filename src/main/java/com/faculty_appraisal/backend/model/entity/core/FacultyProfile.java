@@ -46,13 +46,13 @@ public class FacultyProfile {
     private String appraisalRole = "faculty";
 
     @Column(name = "is_verified")
-    private Boolean isVerified = false;
+    private boolean isVerified = false;
 
     @Column(name = "is_active", nullable = false)
-    private Boolean isActive = true;
+    private boolean isActive = true;
 
     @Column(name = "reports_to_registrar", nullable = false)
-    private Boolean reportsToRegistrar = false;
+    private boolean reportsToRegistrar = false;
 
     @Column(name = "reporting_officer_email")
     private String reportingOfficerEmail;

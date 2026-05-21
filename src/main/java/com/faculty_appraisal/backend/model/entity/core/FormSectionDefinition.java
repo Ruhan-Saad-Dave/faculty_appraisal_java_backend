@@ -1,6 +1,5 @@
 package com.faculty_appraisal.backend.model.entity.core;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -34,7 +33,7 @@ public class FormSectionDefinition {
     private String storageTable;
 
     @Column(columnDefinition = "jsonb", nullable = false)
-    private JsonNode fields;
+    private String fields;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();

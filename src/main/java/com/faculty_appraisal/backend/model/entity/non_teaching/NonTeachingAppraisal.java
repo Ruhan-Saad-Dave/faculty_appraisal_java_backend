@@ -1,6 +1,5 @@
 package com.faculty_appraisal.backend.model.entity.non_teaching;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,8 +22,8 @@ public class NonTeachingAppraisal {
     @Column(name = "academic_year", nullable = false)
     private String academicYear;
 
-    @Column(columnDefinition = "jsonb", nullable = false)
-    private JsonNode payload;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String payload;
 
     @Column(nullable = false)
     private String status = "Draft";

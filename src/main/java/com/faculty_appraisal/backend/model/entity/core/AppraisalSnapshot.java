@@ -1,6 +1,5 @@
 package com.faculty_appraisal.backend.model.entity.core;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,7 +22,7 @@ public class AppraisalSnapshot {
     private String academicYear;
 
     @Column(columnDefinition = "jsonb", nullable = false)
-    private JsonNode payload;
+    private String payload;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
