@@ -1,13 +1,12 @@
 package com.faculty_appraisal.backend.controller;
 
-import com.faculty_appraisal.backend.exception.AppException;
 import com.faculty_appraisal.backend.model.dto.non_teaching.*;
 import com.faculty_appraisal.backend.model.entity.non_teaching.NonTeachingAppraisal;
 import com.faculty_appraisal.backend.security.CurrentUser;
 import com.faculty_appraisal.backend.service.NonTeachingService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,12 +34,12 @@ public class NonTeachingController extends BaseController {
     }
 
     @GetMapping("/appraisal")
-    public NonTeachingAppraisal getMyAppraisal(
+    public ResponseEntity<NonTeachingAppraisal> getMyAppraisal(
             @RequestParam("academic_year") String academicYear
     ) {
         return nonTeachingService.getMyAppraisal(academicYear, currentUser())
-                .orElseThrow(() -> new AppException(HttpStatus.NOT_FOUND.value(),
-                        "No appraisal found for this year"));
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.ok(null));  // match Python: returns null (200) when not found
     }
 
     @PutMapping("/appraisal")

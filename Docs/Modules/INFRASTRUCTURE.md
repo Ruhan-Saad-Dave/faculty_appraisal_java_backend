@@ -15,12 +15,26 @@ This document covers cross-cutting concerns like email notifications and error h
 - **`GlobalExceptionHandler.java`**: A `@ControllerAdvice` that catches exceptions globally. It ensures that the API always returns a consistent error format:
   ```json
   {
-    "status": 403,
-    "message": "Not authorized to view this faculty's data",
-    "timestamp": "2026-05-23T16:00:00"
+    "user_message": "The request data is invalid. Please check the highlighted fields and try again.",
+    "detail": ["field: message"]
+  }
+  ```
+- **Error Categories**:
+    - **422 Unprocessable Entity**: Validation failures (via `@Valid`).
+    - **400 Bad Request**: Malformed JSON or missing required parameters.
+    - **AppException**: Business logic errors with custom status codes.
+    - **500 Internal Server Error**: Catch-all for unexpected exceptions.
+
+## 3. System Health
+- **`HealthController.java`**: Provides a lightweight health check endpoint.
+- **`GET /`**: Returns the API status and version. Used for monitoring and load balancer health checks.
+  ```json
+  {
+    "message": "Faculty Appraisal API is running!",
+    "version": "2.0.0"
   }
   ```
 
-## 3. Storage Service
+## 4. Storage Service
 - The system supports file uploads (e.g., certificates, publications).
 - Metadata is stored in `AppraisalDocument`, while the physical files are handled by the storage logic (configurable for local or cloud storage).

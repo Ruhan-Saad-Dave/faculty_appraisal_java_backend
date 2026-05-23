@@ -38,6 +38,16 @@ Unlike faculty appraisals which have a fixed HOD -> Director -> Dean -> VC chain
 - Some staff members report directly to the Registrar, bypassing the standard Reporting Officer (RO) step.
 - The system automatically detects this via the `reportsToRegistrar` flag in the `FacultyProfile` and adjusts the initial status to `Pending Registrar Review`.
 
+## REST API Endpoints
+All endpoints are prefixed with `/api/v1/non-teaching`.
+
+- **`GET /workflow-template`**: Resolves and returns the workflow template (sequence of steps) applicable to the current user or a specific role.
+- **`GET /workflow/{email}`**: Returns the current workflow status and progress for a specific staff member.
+- **`GET /appraisal`**: Fetches the current user's appraisal for a given academic year.
+- **`PUT /appraisal`**: Saves or submits (upserts) the current user's appraisal.
+- **`GET /subordinates`**: Returns a list of subordinates whose appraisals are currently pending the user's review.
+- **`PUT /review/{email}`**: Submits a review (ratings and remarks) for a subordinate's appraisal.
+
 ## Part B Sections
 Ratings are collected across several categories with 5-point scales:
 1. **Professional Competence** (5 parameters)

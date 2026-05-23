@@ -16,6 +16,7 @@ Welcome to the documentation for the Faculty Appraisal Java Backend. This projec
     - [User Feedback](Modules/FEEDBACK.md)
     - [Announcements](Modules/ANNOUNCEMENT.md)
     - [Dashboard & Reporting](Modules/DASHBOARD.md)
+    - [Infrastructure & Utilities](Modules/INFRASTRUCTURE.md)
 3. [Database Schema](Database/SCHEMA.md) - Entity relationships and data storage.
     - [Database Migrations](Database/MIGRATIONS.md) - Version control for the schema.
 4. [Security & Authorization](Security/SECURITY.md) - JWT and role-based access control.
