@@ -10,9 +10,6 @@ import lombok.Data;
 @Data
 public class IndustryConnect extends BasePartAModel {
 
-    @Column(name = "row_no")
-    private Integer rowNo;
-
     private String name;
 
     private String details;

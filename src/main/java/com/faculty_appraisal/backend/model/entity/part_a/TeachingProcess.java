@@ -12,9 +12,6 @@ import java.math.BigDecimal;
 @Data
 public class TeachingProcess extends BasePartAModel {
 
-    @Column(name = "row_no")
-    private Integer rowNo;
-
     private String semester;
 
     @Column(name = "course_code")

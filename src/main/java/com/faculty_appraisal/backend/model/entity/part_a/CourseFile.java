@@ -10,9 +10,6 @@ import lombok.Data;
 @Data
 public class CourseFile extends BasePartAModel {
 
-    @Column(name = "row_no")
-    private Integer rowNo;
-
     private String course;
 
     private String title;

@@ -3,6 +3,7 @@ package com.faculty_appraisal.backend.repository.core;
 import com.faculty_appraisal.backend.model.entity.core.FacultyProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -34,5 +35,9 @@ public interface FacultyProfileRepository extends JpaRepository<FacultyProfile, 
 
     Optional<FacultyProfile> findByEmailAndIsActiveTrue(String email);
 
+    List<FacultyProfile> findBySchoolIn(Collection<String> schools);
 
+    List<FacultyProfile> findBySchoolAndDepartment(String school, String department);
+
+    List<FacultyProfile> findByAppraisalRoleIn(Collection<String> roles);
 }

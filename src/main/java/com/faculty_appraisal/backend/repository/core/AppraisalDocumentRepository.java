@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface AppraisalDocumentRepository extends JpaRepository<AppraisalDocument, UUID> {
+public interface AppraisalDocumentRepository extends BaseAppraisalRepository<AppraisalDocument, UUID> {
 
     List<AppraisalDocument> findByFacultyEmail(String facultyEmail);
 
@@ -24,4 +24,7 @@ public interface AppraisalDocumentRepository extends JpaRepository<AppraisalDocu
     List<AppraisalDocument> findByAcademicYear(String academicYear);
 
     List<AppraisalDocument> findByDocKey(String docKey);
+
+    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
+
 }

@@ -2,9 +2,13 @@ package com.faculty_appraisal.backend.model.entity.core;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Entity
@@ -39,8 +43,9 @@ public class AppraisalReview {
 
     private String remarks;
 
-    @Column(name = "section_scores", columnDefinition = "TEXT", nullable = false)
-    private String  sectionScores;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "section_scores", columnDefinition = "jsonb", nullable = false)
+    private Map<String, Object> sectionScores = new HashMap<>();
 
     @Column(nullable = false)
     private String status;

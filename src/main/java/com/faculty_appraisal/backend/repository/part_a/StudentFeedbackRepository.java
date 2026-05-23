@@ -1,6 +1,7 @@
 package com.faculty_appraisal.backend.repository.part_a;
 
 import com.faculty_appraisal.backend.model.entity.part_a.StudentFeedback;
+import com.faculty_appraisal.backend.repository.core.BaseAppraisalRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface StudentFeedbackRepository extends JpaRepository<StudentFeedback, UUID> {
+public interface StudentFeedbackRepository extends BaseAppraisalRepository<StudentFeedback, UUID> {
 
     List<StudentFeedback> findByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 
@@ -20,4 +21,6 @@ public interface StudentFeedbackRepository extends JpaRepository<StudentFeedback
     List<StudentFeedback> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
 
     Optional<StudentFeedback> findByFacultyEmailAndAcademicYearAndCourseCode(String facultyEmail, String academicYear, String courseCode);
+
+    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

@@ -13,7 +13,7 @@ public interface AppraisalSnapshotRepository extends JpaRepository<AppraisalSnap
 
     List<AppraisalSnapshot> findByAcademicYear(String academicYear);
 
-    List<AppraisalSnapshot> findByFacultyEmailAndAcademicYear(
+    Optional<AppraisalSnapshot> findByFacultyEmailAndAcademicYear(
             String facultyEmail,
             String academicYear
     );

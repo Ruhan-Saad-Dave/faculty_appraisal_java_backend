@@ -10,8 +10,5 @@ import lombok.Data;
 @Data
 public class ACRScore extends BasePartAModel {
 
-    @Column(name = "row_no")
-    private Integer rowNo;
-
     private String label;
 }
