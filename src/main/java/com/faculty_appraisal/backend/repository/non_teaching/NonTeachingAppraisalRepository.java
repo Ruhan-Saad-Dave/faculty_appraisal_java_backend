@@ -2,6 +2,7 @@ package com.faculty_appraisal.backend.repository.non_teaching;
 
 import com.faculty_appraisal.backend.model.entity.non_teaching.NonTeachingAppraisal;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Collection;
 import java.util.List;
@@ -30,4 +31,7 @@ public interface NonTeachingAppraisalRepository extends JpaRepository<NonTeachin
             Collection<String> staffEmails,
             String academicYear
     );
+
+    @Query("SELECT DISTINCT a.academicYear FROM NonTeachingAppraisal a ORDER BY a.academicYear DESC")
+    List<String> findDistinctAcademicYearsOrderDesc();
 }

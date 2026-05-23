@@ -20,4 +20,7 @@ public interface NTWorkflowTemplateStepRepository extends JpaRepository<NTWorkfl
 
     @Query("SELECT MAX(s.stepNo) FROM NTWorkflowTemplateStep s WHERE s.template.id = :templateId")
     Optional<Integer> findMaxStepNoByTemplateId(@Param("templateId") UUID templateId);
+
+    @Query("SELECT s FROM NTWorkflowTemplateStep s WHERE s.designation.id = :designationId AND s.template.isActive = true")
+    List<NTWorkflowTemplateStep> findByDesignationIdInActiveTemplates(@Param("designationId") UUID designationId);
 }

@@ -20,4 +20,8 @@ public interface NTWorkflowAssignmentRepository extends JpaRepository<NTWorkflow
     Optional<NTWorkflowAssignment> findByAppraisalRole(String appraisalRole);
 
     List<NTWorkflowAssignment> findAllByOrderByCreatedAtDesc();
+
+    Optional<NTWorkflowAssignment> findByAppraisalRoleAndTemplate_Id(String appraisalRole, UUID templateId);
+
+    Optional<NTWorkflowAssignment> findByDepartmentAndTemplate_Id(String department, UUID templateId);
 }
