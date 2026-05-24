@@ -20,7 +20,7 @@ public class AppraisalController extends BaseController {
     private final AppraisalService appraisalService;
 
     @GetMapping("/snapshot")
-    public ResponseEntity<?> getSnapshot(@RequestParam String academicYear) {
+    public ResponseEntity<?> getSnapshot(@RequestParam("academic_year") String academicYear) {
         return ResponseEntity.ok(
                 appraisalService.getSnapshot(currentUser().getEmail(), academicYear)
                         .orElse(null)
@@ -46,7 +46,7 @@ public class AppraisalController extends BaseController {
 
     @GetMapping("/status")
     public ResponseEntity<AppraisalStatusResponse> getStatus(
-            @RequestParam String academicYear) {
+            @RequestParam("academic_year") String academicYear) {
         return ResponseEntity.ok(
                 appraisalService.getStatus(currentUser().getEmail(), academicYear)
         );

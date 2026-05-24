@@ -23,8 +23,8 @@ public class RemarksController extends BaseController {
     @GetMapping("/draft/{email}")
     public ReviewDraftResponse getDraft(
             @PathVariable String email,
-            @RequestParam String academicYear,
-            @RequestParam String reviewerRole
+            @RequestParam("academic_year") String academicYear,
+            @RequestParam("reviewer_role") String reviewerRole
     ) {
         return remarksService.getDraft(email, academicYear, reviewerRole, currentUser());
     }

@@ -27,9 +27,9 @@ public class DashboardController extends BaseController {
      */
     @GetMapping("/subordinates")
     public List<SubordinateDto> getSubordinates(
-            @RequestParam String academicYear,
-            @RequestParam(required = false) String reviewerSchool,
-            @RequestParam(required = false) String reviewerDepartment,
+            @RequestParam("academic_year") String academicYear,
+            @RequestParam(value = "reviewer_school", required = false) String reviewerSchool,
+            @RequestParam(value = "reviewer_department", required = false) String reviewerDepartment,
             @RequestParam(required = false) String schools
     ) {
         CurrentUser user = currentUser();
@@ -43,7 +43,7 @@ public class DashboardController extends BaseController {
     @GetMapping("/faculty/{email}")
     public FacultySnapshotDto getFacultySnapshot(
             @PathVariable String email,
-            @RequestParam String academicYear
+            @RequestParam("academic_year") String academicYear
     ) {
         return dashboardService.getFacultySnapshot(email, academicYear, currentUser());
     }

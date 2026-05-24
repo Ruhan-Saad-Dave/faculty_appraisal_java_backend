@@ -28,7 +28,7 @@ public class NonTeachingController extends BaseController {
     @GetMapping("/workflow/{email}")
     public WorkflowStatusResponse getWorkflowForStaff(
             @PathVariable String email,
-            @RequestParam String academicYear
+            @RequestParam("academic_year") String academicYear
     ) {
         return nonTeachingService.getWorkflowForStaff(email, academicYear, currentUser());
     }

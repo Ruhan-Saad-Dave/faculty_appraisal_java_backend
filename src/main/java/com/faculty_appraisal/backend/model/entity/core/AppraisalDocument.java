@@ -1,17 +1,25 @@
 package com.faculty_appraisal.backend.model.entity.core;
 
-import com.faculty_appraisal.backend.model.BaseAppraisalModel;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "appraisal_documents")
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class AppraisalDocument extends BaseAppraisalModel {
+public class AppraisalDocument {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @Column(name = "faculty_email", nullable = false)
+    private String facultyEmail;
+
+    @Column(name = "academic_year", nullable = false)
+    private String academicYear;
 
     @Column(nullable = false)
     private String section;
