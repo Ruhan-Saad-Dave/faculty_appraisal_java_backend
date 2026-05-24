@@ -19,6 +19,4 @@ public interface QualificationEnhancementRepository extends BaseAppraisalReposit
     Optional<QualificationEnhancement> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<QualificationEnhancement> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

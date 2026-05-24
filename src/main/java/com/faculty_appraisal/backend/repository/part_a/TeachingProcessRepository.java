@@ -22,6 +22,4 @@ public interface TeachingProcessRepository extends BaseAppraisalRepository<Teach
 
     Optional<TeachingProcess> findByFacultyEmailAndAcademicYearAndCourseCodeAndSemester(
             String facultyEmail, String academicYear, String courseCode, String semester);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

@@ -16,6 +16,4 @@ public interface PopularWritingRepository extends BaseAppraisalRepository<Popula
     Optional<PopularWriting> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<PopularWriting> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

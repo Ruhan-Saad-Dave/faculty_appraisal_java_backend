@@ -16,6 +16,4 @@ public interface IPRRecordRepository extends BaseAppraisalRepository<IPRRecord, 
     Optional<IPRRecord> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<IPRRecord> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

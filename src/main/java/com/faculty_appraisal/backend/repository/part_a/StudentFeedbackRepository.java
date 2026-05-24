@@ -21,6 +21,4 @@ public interface StudentFeedbackRepository extends BaseAppraisalRepository<Stude
     List<StudentFeedback> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
 
     Optional<StudentFeedback> findByFacultyEmailAndAcademicYearAndCourseCode(String facultyEmail, String academicYear, String courseCode);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

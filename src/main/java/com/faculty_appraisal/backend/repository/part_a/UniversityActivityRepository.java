@@ -19,6 +19,4 @@ public interface UniversityActivityRepository extends BaseAppraisalRepository<Un
     Optional<UniversityActivity> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<UniversityActivity> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

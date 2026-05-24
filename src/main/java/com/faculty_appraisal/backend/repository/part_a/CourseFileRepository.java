@@ -19,6 +19,4 @@ public interface CourseFileRepository extends BaseAppraisalRepository<CourseFile
     Optional<CourseFile> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<CourseFile> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

@@ -17,6 +17,4 @@ public interface ACRScoreRepository extends BaseAppraisalRepository<ACRScore, UU
     Optional<ACRScore> findByRowNoAndLabel(Integer rowNo, String label);
 
     List<ACRScore> findAllByOrderByRowNoAsc();
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

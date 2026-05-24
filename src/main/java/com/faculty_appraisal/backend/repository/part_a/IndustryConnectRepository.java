@@ -19,6 +19,4 @@ public interface IndustryConnectRepository extends BaseAppraisalRepository<Indus
     Optional<IndustryConnect> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<IndustryConnect> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

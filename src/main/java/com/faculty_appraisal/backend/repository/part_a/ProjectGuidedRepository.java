@@ -19,6 +19,4 @@ public interface ProjectGuidedRepository extends BaseAppraisalRepository<Project
     Optional<ProjectGuided> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<ProjectGuided> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

@@ -16,6 +16,4 @@ public interface ICTPedagogyRepository extends BaseAppraisalRepository<ICTPedago
     Optional<ICTPedagogy> findByFacultyEmailAndAcademicYearAndRowNo(String facultyEmail, String academicYear, Integer rowNo);
 
     List<ICTPedagogy> findAllByFacultyEmailAndAcademicYearOrderByRowNoAsc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }

@@ -2,6 +2,9 @@ package com.faculty_appraisal.backend.repository.core;
 
 import com.faculty_appraisal.backend.model.entity.core.AppraisalDocument;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,6 +28,8 @@ public interface AppraisalDocumentRepository extends BaseAppraisalRepository<App
 
     List<AppraisalDocument> findByDocKey(String docKey);
 
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
+    @Modifying
+    @Query("DELETE FROM AppraisalDocument d WHERE d.facultyEmail = :email AND d.academicYear = :year")
+    void deleteByFacultyEmailAndAcademicYear(@Param("email") String email, @Param("year") String year);
 
 }

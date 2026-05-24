@@ -19,6 +19,4 @@ public interface InnovativeTeachingRepository extends BaseAppraisalRepository<In
     Optional<InnovativeTeaching> findByFacultyEmailAndAcademicYearAndFormFamily(String facultyEmail, String academicYear, String formFamily);
 
     List<InnovativeTeaching> findAllByFacultyEmailAndAcademicYearOrderByCreatedAtDesc(String facultyEmail, String academicYear);
-
-    void deleteByFacultyEmailAndAcademicYear(String facultyEmail, String academicYear);
 }
