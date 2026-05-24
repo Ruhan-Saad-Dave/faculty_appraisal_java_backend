@@ -42,18 +42,16 @@ steps:
       - --allow-unauthenticated
       - --port=8080
       - --add-cloudsql-instances=facultyappraisal-495011:asia-south1:faculty-appraisal-db
-      # Non-sensitive env vars — set here
-      # DATABASE_URL uses Cloud SQL socket factory (postgres-socket-factory dep in pom.xml)
-      - --update-env-vars=DATABASE_URL=jdbc:postgresql:///faculty_appraisal?cloudSqlInstance=facultyappraisal-495011:asia-south1:faculty-appraisal-db&socketFactory=com.google.cloud.sql.postgres.SocketFactory,DB_USERNAME=postgres,USE_LOCAL_STORAGE=false
-      # Sensitive values — must be created in Secret Manager before first deploy:
-      #   gcloud secrets create DB_PASSWORD --replication-policy=automatic
-      #   gcloud secrets create JWT_SECRET_KEY --replication-policy=automatic
-      #   gcloud secrets create SMTP_PASSWORD --replication-policy=automatic
-      # Then grant the Cloud Run SA access: secretmanager.secretAccessor role
+      # Non-sensitive env vars (DATABASE_URL uses postgres-socket-factory dep in pom.xml)
+      - --update-env-vars=DATABASE_URL=jdbc:postgresql:///faculty_appraisal?cloudSqlInstance=facultyappraisal-495011:asia-south1:faculty-appraisal-db&socketFactory=com.google.cloud.sql.postgres.SocketFactory,DB_USERNAME=app_user,USE_LOCAL_STORAGE=false,GCP_STORAGE_BUCKET=faculty-appraisal-uploads,GCP_PROJECT_ID=facultyappraisal-495011,SMTP_HOST=smtp.gmail.com,SMTP_PORT=587,SMTP_USER=appraisal@dypiu.ac.in,MAIL_FROM=appraisal@dypiu.ac.in,FRONTEND_URL=https://faculty-appraisal-frontend-376777978967.asia-south1.run.app,ALLOW_MOCK_USER=false
+      # NOTE: After first deploy, get the Cloud Run URL and add:
+      # --update-env-vars=APP_URL=https://faculty-appraisal-java-XXXXXXXXXX.asia-south1.run.app
+      # Sensitive values — pulled from GCP Secret Manager at deploy time
+      # Create these once with the commands in the README before first deploy
       - --update-secrets=DB_PASSWORD=DB_PASSWORD:latest,JWT_SECRET_KEY=JWT_SECRET_KEY:latest,SMTP_PASSWORD=SMTP_PASSWORD:latest
       - --quiet
 
-  # Push :COMMIT_SHA tag in parallel with deploy for traceability
+  # Push :COMMIT_SHA in parallel with deploy for traceability
   - name: gcr.io/cloud-builders/docker
     id: push-sha
     waitFor: [push-latest]
