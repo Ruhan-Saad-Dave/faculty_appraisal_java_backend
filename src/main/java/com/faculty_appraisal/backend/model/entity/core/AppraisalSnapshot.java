@@ -1,5 +1,6 @@
 package com.faculty_appraisal.backend.model.entity.core;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,6 +22,7 @@ public class AppraisalSnapshot {
     @Column(name = "academic_year", nullable = false)
     private String academicYear;
 
+    @JsonRawValue
     @Column(columnDefinition = "jsonb", nullable = false)
     private String payload;
 
