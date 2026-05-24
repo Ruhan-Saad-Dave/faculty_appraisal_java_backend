@@ -98,7 +98,11 @@ public class AppraisalService {
                     return s;
                 });
 
-        snapshot.setPayload(request.payload());
+        try {
+            snapshot.setPayload(objectMapper.writeValueAsString(request.payload()));
+        } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+            throw new AppException(500, "Error serializing snapshot payload: " + e.getMessage());
+        }
         snapshotRepo.save(snapshot);
 
         if (request.docs() != null && !request.docs().isEmpty()) {
@@ -175,7 +179,11 @@ public class AppraisalService {
         Map<String, Object> fullPayload = new HashMap<>();
         fullPayload.put("form", form);
         fullPayload.put("totals", totals);
-        snapshot.setPayload(fullPayload);
+        try {
+            snapshot.setPayload(objectMapper.writeValueAsString(fullPayload));
+        } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+            throw new AppException(500, "Error serializing snapshot payload: " + e.getMessage());
+        }
         snapshotRepo.save(snapshot);
 
         return Map.of(

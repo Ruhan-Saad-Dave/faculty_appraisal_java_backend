@@ -1,12 +1,11 @@
 package com.faculty_appraisal.backend.model.entity.core;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+import org.hibernate.annotations.ColumnTransformer;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.UUID;
 
 @Entity
@@ -24,9 +23,10 @@ public class AppraisalSnapshot {
     @Column(name = "academic_year", nullable = false)
     private String academicYear;
 
-    @JdbcTypeCode(SqlTypes.JSON)
+    @JsonRawValue
+    @ColumnTransformer(write = "?::jsonb")
     @Column(columnDefinition = "jsonb", nullable = false)
-    private Map<String, Object> payload;
+    private String payload;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
