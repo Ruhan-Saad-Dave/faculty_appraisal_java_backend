@@ -231,12 +231,8 @@ public class DashboardService {
             dto.setId(snap.getId().toString());
             dto.setFacultyEmail(snap.getFacultyEmail());
             dto.setAcademicYear(snap.getAcademicYear());
-            try {
-                if (snap.getPayload() != null) {
-                    dto.setPayload(objectMapper.readValue(snap.getPayload(), new TypeReference<Map<String, Object>>() {}));
-                }
-            } catch (Exception e) {
-                log.error("Failed to parse snapshot payload for {}", email, e);
+            if (snap.getPayload() != null) {
+                dto.setPayload(snap.getPayload());
             }
             dto.setCreatedAt(snap.getCreatedAt());
             dto.setUpdatedAt(snap.getUpdatedAt());
